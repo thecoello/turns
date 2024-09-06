@@ -1,0 +1,129 @@
+<div class="w-screen h-screen flex items-center justify-center flex-col p-10 uppercase">
+  <div
+    class="relative flex w-full h-full text-black bg-white shadow-md rounded-xl bg-clip-border overflow-hidden">
+
+    <div class="w-[50%]">
+
+      <div class="w-full flex">
+        <div class="w-[20%] p-4 bg-yellow-500">
+          <p class="block font-sans antialiased font-bold leading-none text-black text-[2rem]">
+            Turn
+          </p>
+        </div>
+        <div class="w-[60%] p-4 bg-yellow-500">
+
+        </div>
+        <div class="w-[20%] p-4 bg-yellow-500">
+          <p class="block font-sans antialiased font-bold leading-none text-black text-[2rem]">
+            Go To
+          </p>
+        </div>
+      </div>
+
+      <div *ngFor="let turn of turns ? turns : undefined" class="w-full flex flex-col">
+        <div  *ngIf="!turn.attended && turn.call" class="w-full flex">
+          <div class="w-[20%] p-4 flex justify-center items-center font-sans antialiased font-normal leading-none text-black text-[3rem] ">
+            {{turn.prefix}}-{{turn.number}}
+          </div>
+    
+          <div *ngIf="turn.call" class="w-[60%] flex justify-center items-center ">
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+            <svg class="arrowsgoto opacity-[0.2]" width="64px" height="64px" viewBox="0 0 24 24" stroke-width="1.2" fill="none"
+              xmlns="http://www.w3.org/2000/svg" color="#000000">
+              <path d="M13 6L19 12L13 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+              <path d="M5 6L11 12L5 18" stroke="#000000" stroke-width="1.2" stroke-linecap="round"
+                stroke-linejoin="round"></path>
+            </svg>
+
+
+          </div>
+          <div *ngIf="turn.call" class="w-[20%] p-4 flex justify-center items-center font-sans antialiased font-normal leading-none text-yellow-500 bg-black radi">
+
+            <div class="flex flex-col justify-center items-center">
+              <div class="text-[1rem]">window</div>
+              <div class="text-[3rem]">{{turn.window}}</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-[50%] flex flex-col">
+      <img class="object-cover w-full h-[150vh]" src="https://images.unsplash.com/photo-1664575600397-88e370cb46b8?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+
+      <div class="right-0 flex flex-col h-[30%]">
+        <span class="bg-black p-4 text-[2rem] text-white font-bold">
+          Need a shipping service for your business?
+        </span>
+        <span class="bg-yellow-500 p-4 text-black border-top-1 ">
+          Ask for our plans to our information department
+        </span>
+      </div>
+
+ 
+      
+
+    </div>
+  </div>
+
+
+</div>

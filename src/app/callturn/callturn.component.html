@@ -1,0 +1,186 @@
+<div class="w-screen h-screen flex items-center justify-center flex-col p-10 uppercase">
+  <div class="relative flex w-full h-full text-black bg-white shadow-md rounded-xl bg-clip-border overflow-hidden">
+
+    <div class="w-[30%] border-r-[1px] border-black">
+
+      <div class="p-5 bg-yellow-500 text-black flex sticky top-0 z-10">
+        <span class="pl-2 pr-2">Send Parcel</span>
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg" color="#000000">
+          <path
+            d="M8 19C9.10457 19 10 18.1046 10 17C10 15.8954 9.10457 15 8 15C6.89543 15 6 15.8954 6 17C6 18.1046 6.89543 19 8 19Z"
+            stroke="#000000" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round">
+          </path>
+          <path
+            d="M18 19C19.1046 19 20 18.1046 20 17C20 15.8954 19.1046 15 18 15C16.8954 15 16 15.8954 16 17C16 18.1046 16.8954 19 18 19Z"
+            stroke="#000000" stroke-width="1.5" stroke-miterlimit="1.5" stroke-linecap="round" stroke-linejoin="round">
+          </path>
+          <path d="M10.05 17H15V6.6C15 6.26863 14.7314 6 14.4 6H1" stroke="#000000" stroke-width="1.5"
+            stroke-linecap="round"></path>
+          <path d="M5.65 17H3.6C3.26863 17 3 16.7314 3 16.4V11.5" stroke="#000000" stroke-width="1.5"
+            stroke-linecap="round"></path>
+          <path d="M2 9L6 9" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M15 9H20.6101C20.8472 9 21.0621 9.13964 21.1584 9.35632L22.9483 13.3836C22.9824 13.4604 23 13.5434 23 13.6273V16.4C23 16.7314 22.7314 17 22.4 17H20.5"
+            stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+          <path d="M15 17H16" stroke="#000000" stroke-width="1.5" stroke-linecap="round"></path>
+        </svg>
+      </div>
+
+      <div class="overflow-y-auto h-full">
+        <div *ngFor="let turn of turns ; index as i" class="w-full flex flex-col">
+          <div *ngIf="turn.prefix == 'S' && !turn.attended" class="w-full flex border-b-2">
+            <div
+              class="w-[30%] p-4 flex justify-center items-center font-sans antialiased font-normal leading-none text-black text-[1.5rem] ">
+              {{turn.prefix}}-{{turn.number}}
+            </div>
+
+            <div
+              class="w-[70%] p-4 flex justify-end items-center text-center font-sans antialiased font-normal leading-none text-white">
+              <button *ngIf="!turn.call" (click)="callTurn(turn, i, 1)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-black bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Call
+              </button>
+              <button *ngIf="turn.call" (click)="attendedTurn(turn, i)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-green-500 bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Mark as Attended
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-[30%] border-r-[1px] border-black">
+
+      <div class="p-5 bg-yellow-500 text-black flex sticky top-0 z-10">
+        <span class="pl-2 pr-2">Pick up parcel</span>
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg" color="#000000">
+          <path
+            d="M20 5.99999L20 18C20 19.1046 19.1046 20 18 20H6C4.89543 20 4 19.1046 4 18V6C4 4.89543 4.89543 4 6 4H18C19.1045 4 19.9999 4.89543 20 5.99999Z"
+            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M12 9V4" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="overflow-y-auto h-full">
+
+        <div *ngFor="let turn of turns ; index as i" class="w-full flex flex-col">
+          <div *ngIf="turn.prefix == 'P' && !turn.attended" class="w-full flex border-b-2">
+            <div
+              class="w-[30%] p-4 flex justify-center items-center font-sans antialiased font-normal leading-none text-black text-[1.5rem] ">
+              {{turn.prefix}}-{{turn.number}}
+            </div>
+
+            <div
+              class="w-[70%] p-4 flex justify-end items-center text-center font-sans antialiased font-normal leading-none text-white">
+              <button *ngIf="!turn.call" (click)="callTurn(turn, i, 2)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-black bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Call
+              </button>
+              <button *ngIf="turn.call" (click)="attendedTurn(turn, i)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-green-500 bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Mark as Attended
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="w-[30%] border-r-[1px] border-black">
+
+      <div class="p-5 bg-yellow-500 text-black flex sticky top-0 z-10">
+        <span class="pl-2 pr-2">Information</span>
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg" color="#000000">
+          <path d="M12 7L12 13" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          </path>
+          <path d="M12 17.01L12.01 16.9989" stroke="#000000" stroke-width="1.5" stroke-linecap="round"
+            stroke-linejoin="round"></path>
+          <path
+            d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="overflow-y-auto h-full">
+
+        <div *ngFor="let turn of turns ; index as i" class="w-full flex flex-col">
+          <div *ngIf="turn.prefix == 'I' && !turn.attended" class="w-full flex border-b-2">
+            <div
+              class="w-[30%] p-4 flex justify-center items-center font-sans antialiased font-normal leading-none text-black text-[1.5rem] ">
+              {{turn.prefix}}-{{turn.number}}
+            </div>
+
+            <div
+              class="w-[70%] p-4 flex justify-end items-center text-center font-sans antialiased font-normal leading-none text-white">
+              <button *ngIf="!turn.call" (click)="callTurn(turn, i, 3)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-black bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Call
+              </button>
+              <button *ngIf="turn.call" (click)="attendedTurn(turn, i)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-green-500 bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Mark as Attended
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="w-[30%]">
+
+      <div class="p-5 bg-yellow-500 text-black flex sticky top-0 z-10">
+        <span class="pl-2 pr-2">Customer service</span>
+        <svg width="24px" height="24px" stroke-width="1.5" viewBox="0 0 24 24" fill="none"
+          xmlns="http://www.w3.org/2000/svg" color="#000000">
+          <path
+            d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z"
+            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path d="M4.271 18.3457C4.271 18.3457 6.50002 15.5 12 15.5C17.5 15.5 19.7291 18.3457 19.7291 18.3457"
+            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+          <path
+            d="M12 12C13.6569 12 15 10.6569 15 9C15 7.34315 13.6569 6 12 6C10.3431 6 9 7.34315 9 9C9 10.6569 10.3431 12 12 12Z"
+            stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </div>
+      <div class="overflow-y-auto h-full">
+
+        <div *ngFor="let turn of turns ; index as i" class="w-full flex flex-col">
+          <div *ngIf="turn.prefix == 'C' && !turn.attended" class="w-full flex border-b-2">
+            <div
+              class="w-[30%] p-4 flex justify-center items-center font-sans antialiased font-normal leading-none text-black text-[1.5rem] ">
+              {{turn.prefix}}-{{turn.number}}
+            </div>
+
+            <div
+              class="w-[70%] p-4 flex justify-end items-center text-center font-sans antialiased font-normal leading-none text-white">
+              <button *ngIf="!turn.call" (click)="callTurn(turn, i, 4)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-black bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Call
+              </button>
+              <button *ngIf="turn.call" (click)="attendedTurn(turn, i)"
+                class="align-middle select-none font-sans font-bold text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none text-[0.8rem] py-3.5 px-7 rounded-lg bg-gradient-to-tr bg-green-500 bg-yellow-500shadow-md hover:shadow-lg active:opacity-[0.85] group relative flex items-center justify-center gap-3 overflow-hidden"
+                type="button">
+                Mark as Attended
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
